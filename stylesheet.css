@@ -1,0 +1,236 @@
+/* ===== Reset and Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(270deg, #1f1c2c, #928dab, #ff00d4, #00f0ff);
+  background-size: 800% 800%;
+  animation: gradientMove 20s ease infinite;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Background animation keyframes */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #00f0ff;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== Intro Section ===== */
+.intro {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.intro h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: glowText 3s infinite alternate;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 10px #00f0ff; }
+  to { text-shadow: 0 0 20px #ff00d4, 0 0 30px #00f0ff; }
+}
+
+/* ===== Product Grid (Unified for all sections) ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 50px;
+  justify-items: center;
+}
+
+.product-card,
+.product-grid .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  perspective: 1000px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  animation: cardGlow 6s ease-in-out infinite;
+}
+
+.product-card img,
+.product-grid .card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover,
+.product-grid .card:hover {
+  transform: rotateY(5deg) rotateX(5deg) scale(1.03);
+  box-shadow: 0 10px 40px rgba(0, 240, 255, 0.5);
+}
+
+.product-card:hover img,
+.product-grid .card:hover img {
+  transform: scale(1.1) rotate(-2deg);
+}
+
+.product-card h2,
+.product-grid .card h2 {
+  margin: 15px;
+  font-size: 1.3rem;
+  color: #00f0ff;
+}
+
+.product-card p,
+.product-grid .card p {
+  margin: 0 15px 15px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* ===== Buy Links (Same for all) ===== */
+.buy-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0 20px;
+}
+
+.buy-links a {
+  background: #00f0ff;
+  color: #000;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  animation: buttonGlow 6s ease-in-out infinite;
+}
+
+.buy-links a:hover {
+  background: #ff00d4;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===== Testimonials ===== */
+table {
+  margin-top: 30px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+table img {
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Footer ===== */
+.social-footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.4);
+}
+
+.social-icons img {
+  width: 35px;
+  margin: 0 10px;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 0 15px #ff00d4;
+}
+
+/* ===== Dynamic Glow for Product Cards ===== */
+@keyframes cardGlow {
+  0% { box-shadow: 0 0 20px #00f0ff; }
+  25% { box-shadow: 0 0 25px #ff00d4; }
+  50% { box-shadow: 0 0 20px #928dab; }
+  75% { box-shadow: 0 0 25px #1f1c2c; }
+  100% { box-shadow: 0 0 20px #00f0ff; }
+}
+
+/* ===== Dynamic Glow for Buy Buttons ===== */
+@keyframes buttonGlow {
+  0% { box-shadow: 0 0 10px #00f0ff; background-color: #00f0ff; }
+  25% { box-shadow: 0 0 12px #ff00d4; background-color: #ff00d4; }
+  50% { box-shadow: 0 0 10px #928dab; background-color: #928dab; }
+  75% { box-shadow: 0 0 12px #1f1c2c; background-color: #1f1c2c; color: #fff; }
+  100% { box-shadow: 0 0 10px #00f0ff; background-color: #00f0ff; }
+}
+
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+  nav {
+    margin-top: 10px;
+  }
+}
